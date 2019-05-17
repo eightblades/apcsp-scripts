@@ -1,6 +1,6 @@
 #!/bin/bash
 read -p "Which PI?: "  pinum
-if [$pinum -eq 0]; then
+if [$pinum -eq ""]; then
   for i in {01..20}
   do
        ping rpi$i -w 1 > /dev/null
