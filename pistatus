@@ -1,4 +1,4 @@
-#!/bin/back
+#!/bin/bash
 read -p "Which PI?: "  pinum
 if $pimun == ""
   for i in {01..20}
