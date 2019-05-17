@@ -5,5 +5,5 @@ do
      if [ $? -eq 0 ]; then
         host = 172.19.233.$i
         echo host
-done
+<#done
 echo "complete"
