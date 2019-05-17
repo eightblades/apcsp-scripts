@@ -1,0 +1,39 @@
+#!/bin/bash
+IP=`hostname -I`
+Front=`echo "$IP"` | cut -c 1
+Back=${IP##$Front*.}
+Host=${IP%$Back}
+Ping_Alive(){
+    echo $Host$i : Up
+    host=`host "$Var" | cut -d' ' -f5`
+    echo "host : $host"
+}
+Mac_Addr(){
+    MAF=`grep "$Var" /proc/net/arp`
+    MA=`echo $MAF | cut -d' ' -f4`
+    echo "Mac Address : $MA"
+}
+Port_22(){
+    if nc -z -w 1 "$Var" 22;then
+      echo "Port 22 : Up"
+    else
+      echo "Port 22 : Down"
+    fi
+}
+Port_80(){ 
+    if nc -z -w 1 "$Var" 80;then
+      echo "Port 80 : Up"
+    else
+      echo "Port 80 : Down"
+    fi
+}
+for i in {1..255}
+  do
+    Var="$Host$i"
+    if ping -c 1 -W 1 "$Var" >/dev/null 2>&1; then
+      Ping_Alive $i
+      Mac_Addr $i
+      Port_22 $i
+      Port_80 $i
+    fi
+done
