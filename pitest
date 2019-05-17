@@ -1,11 +1,11 @@
 #!/bin/back
-for i in {01..20}
+for i in {01..255}
 do
-     ping rpi$i -w 1 > /dev/null
+     ping 172.19.223.$i -w 1 > /dev/null
      if [ $? -eq 0 ]; then
-        echo "RPI$i is up"
+        echo "IP"
      else 
-        echo "RPI$i is down"
+        echo "PI"
      fi
 done
 echo "complete"
