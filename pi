@@ -1,4 +1,4 @@
-#!/bin/back
+#!/bin/bash
 for i in {1..255}
 do
      ping 172.19.233.$i -w 1 > /dev/null
